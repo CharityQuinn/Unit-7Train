@@ -74,5 +74,7 @@ database.ref().on("child_added", function (childSnapshot, prevChildKey) {
 
   // Populate the current train data in html, create table to do it
   $("#train-Table > tbody").append("<tr><td>" + trainName + "</td><td>" + trainDestination + "</td><td>" +
-    trainFrequency + " min" + "</td><td>" + nextTrain + "</td><td>" + "Arrives in : " + tMinutesTillTrain + " min" + "</td></tr>");
+    trainFrequency + " min" + "</td><td>" + nextTrain + "</td><td>" + "Arrives in : " + tMinutesTillTrain + " min" + "</td>" + "<td>" + "<button class='btn btn-secondary'>" + "<i class='fas fa-file-signature'></i>" + "</button>" +
+    "<button 'class=''btn btn-secondary'>" + "<i class='fas fa-undo'>" + "</i>" + "</button>" + "</td>" + "</tr>"
+  );
 });
