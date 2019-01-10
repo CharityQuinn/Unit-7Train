@@ -9,18 +9,14 @@ var config = {
 };
 firebase.initializeApp(config);
 
-
-
 // save firebase database reference
 var database = firebase.database();
 
 var activeTrainKey = "";
 
-
 // add event listener for form submit
 $("#submit-btn").on("click", function (event) {
   event.preventDefault();
-
 
   var trainName = $("#train-input").val().trim();
   var trainDestination = $("#destination-input").val().trim();
@@ -41,7 +37,6 @@ $("#submit-btn").on("click", function (event) {
   } else {
     database.ref().push(newTrain);
   }
-
 
   // clear out any value in form input tags on page
   $("#train-input").val("");
@@ -119,34 +114,28 @@ database.ref().on("child_changed", function (childSnapshot, prevChildKey) {
     "<button  data-key=" + childSnapshot.key + " class='btn btn-secondary delete'>" + "<i class='fas fa-undo'>" + "</i>" + "</button>" + "</td>"
   );
 });
+
 $(document).ready(function () {
 
   $(document).on("click", ".delete", function (event) {
     // retrieve key from button
     activeTrainKey = $(this).attr("data-key");
     console.log("Delete button clicked");
-    database.ref(activeTrainKey).remove().then(function() {
+    database.ref(activeTrainKey).remove().then(function () {
       // remove row after successful deletion 
       $(`tr[data-key=${activeTrainKey}]`).remove();
       activeTrainKey = "";
     })
-    
-
   });
 
 
-  $(document).on("click", ".edit", function() {
+  $(document).on("click", ".edit", function () {
     // get key out of button
     activeTrainKey = $(this).attr("data-key");
-    database.ref(activeTrainKey).once("value", function(childSnapshot) {
+    database.ref(activeTrainKey).once("value", function (childSnapshot) {
       // retrieve values out of snapshot.val()
       console.log("inside edit button");
-      //  trainName = childSnapshot.val().name;
-      //  trainDestination = childSnapshot.val().destination;
-      //  time = childSnapshot.val().firstTrainTime;
-      //  trainFrequency = childSnapshot.val().frequency;
-      // write values to form input tags
-      // $("#train-name-input").val(childSnapshot.val().trainName);
+
       console.log(childSnapshot.val());
       $("#train-input").val(childSnapshot.val().name);
       $("#destination-input").val(childSnapshot.val().destination);

@@ -7,4 +7,4 @@ This project will be useful if you want to track the schedule of a train in real
 You can access this project through this link: https://charityquinn.github.io/Unit-7Train/.
 
 If you have any questions, please Slack me a message.
-I will maintain this project but it is only here with the tremendous help from my tutor.
+I will maintain this project but it is only here with the tremendous help from my teacher and tutor.
